@@ -22,13 +22,15 @@ int main(){
         printf ("  -[6]- Afficher le nombre total de livres en stock \n");
         printf ("  -[7]- Arret du programme  \n");
         scanf ("%d",&chois);
+
+
        switch(chois){
 
         case 1: printf ("Entre les information de live :\n");
                 printf ("Titre : ");
-                scanf ("%s",&titre[n]);
+                scanf ("%s", titre[n]);
                 printf (" Auteur : ");
-                scanf ("%s",&auteur[n]);
+                scanf ("%s", auteur[n]);
                 printf ("Prix : ");
                 scanf ("%f",&prix[n]);
                 printf ("Quantite :");
@@ -49,7 +51,7 @@ int main(){
         case 3:
                 
                 printf ("Entre le titre de livre : ");
-                scanf ("%s",&titreR);
+                scanf ("%s", titreR);
                 for(int i=0;i<n;i++){
                     if(strcmp(titre[i],titreR)==0){
                        x=i;
@@ -67,10 +69,8 @@ int main(){
                 }
                 break;
         case 4: 
-                int nouvquantite;
-                
                 printf ("Entre le titre de livre : ");
-                scanf ("%s",&titreR);
+                scanf ("%s",  titreR);
                 for(int i=0;i<n;i++){
                     if(strcmp(titre[i],titreR)==0){
                        x=i;
@@ -81,13 +81,13 @@ int main(){
                  printf ("! le livre  n'existe pas !");
                 else {
                     printf ("Entre la nouvelle quantite : ");
-                    scanf("%d",&nouvquantite);
-                   quantite[x] = nouvquantite;
+                    scanf("%d",&quantite[x]);
+                  
                 }
                 break;
         case 5: 
                 printf ("Entre le titre de livre : ");
-                scanf ("%s",&titreR);
+                scanf ("%s", titreR);
                 for(int i=0;i<n;i++){
                     if(strcmp(titre[i],titreR)==0){
                        x=i;
@@ -98,17 +98,23 @@ int main(){
                  printf ("! le livre  n'existe pas !");
                 else {
                     for(int i=x;i<n;i++){
-                        titre[i] = titre[i+1];
-                        auteur[i] = auteur[i+1];
+                        strcpy(titre[i],titre[i+1]);
+                        strcpy(auteur[i],auteur[i+1]);
                         prix[i] = prix[i+1];
                         quantite[i] = quantite[i+1];
                     }
-                    n--; 
-                    }
-        case 5: 
-        printf("le Nombre Total de Livres en Stock : %d ",n);
-            
+                 printf("Supprimé avec succès ! ");
+                    n--;
+                }
+                    break;
+        case 6: printf("le Nombre Total de Livres en Stock : %d ",n);
+        break;
+        case 7: printf (" le programme est termine !");
+        break;
+        default : printf ("Entre un nombre entre 1 et 7 ");
+        break;
        }
+     
     }while(chois !=7);
 
 
