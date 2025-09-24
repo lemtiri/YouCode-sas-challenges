@@ -1,28 +1,36 @@
 #include <stdio.h>
-#include <sdlib.h>
+#include <stlib.h>
 int main(){
-int age,cotisation,p=0;bonus =0;
- long montant;
-printf ("Entre votre age : ");
-scanf ("%d",&age);
-printf ("Entre l annnees de cotisation : ");
-scqnf ("%d",&cotisation);
-scanf ("Entre le Montant total épargné (en euros) ");
-scanf ("%ld",&montant);
+ int age, historique, couverture;
+    float  base = 100, Supp = 0, total;
+    do{
+        printf ("Entre l age : ");
+    scanf("%d", &age);
+    printf (" Entre l historique medical  (0 pour aucun problème, 1 pour problème mineur, 2 pour problème majeur) : ");
+    scanf("%d", &historique);
+    printf ("Entre le type de couverture  Type de couverture (1 pour de base, 2 pour étendue) : ");
+    scanf("%d", &couverture);
+    }while (historique < 0 && historique >2 || couverture <1 && couverture >2 );
 
+    if (age < 30) {
+        total = base;
+        printf("Plan de Base\n");
+    } else {
+        if (historique == 0) {
+            total = base;
+            printf("Pln de Base\n");
+        } else {
+            total =  base * 1.5;
+            printf("Plan Etendu\n");
+        }
+    }
 
- if(age >=65 && cotisation >= 30 && montant >=100000){
-     printf ("Plan compte avec pension elevee ");
-     p = 100000 * 0.05;
- }
+    if (historique == 2) {
+        Supp = 50.0;
+        total = total + Supp;
+    }
 
- else if(age >=65 && cotisation >= 20 && montant >=50000){
-   printf (" Plan partiel avec pension moyenne "); 
-  p = 50000 * 0.05;
- }
- 
- else if(age < 65)
- printf ("Plan encore disponible !");
+    printf("Cout total de la couverture : %.2f  supplement : %.2f £\n", total, Supp);
 
 
 
