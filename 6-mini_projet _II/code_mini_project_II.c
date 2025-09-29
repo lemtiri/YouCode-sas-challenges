@@ -42,7 +42,8 @@ void supprimer(contacts c);
 
 
 int main(){
-    contacts c =      {{1,"abdellah","0604789190","lemtiriabdellah@gmail.com"},
+    contacts c =      {
+                       {1,"abdellah","0604789190","lemtiriabdellah@gmail.com"},
                        {2,"mohammed","0612344321","simo0909@gmail.com"},
                        {3,"khalid",   "068748484","khalid.bai@gmail.com"},
                        {4,"hassn","0609786543","hqssanret@gmail.com"},
@@ -127,7 +128,7 @@ void ajout_simple(contacts c ){
           printf ("Adresse e-mail : ");
           scanf("%50s", c[n].mail);
           n++;
-          printf ("Informations saisies avec succes !\n ");
+          printf (GREEN"Informations saisies avec succes !\n "RESET);
      }
 void ajouter(contacts c){
        
@@ -135,8 +136,8 @@ void ajouter(contacts c){
     printf ("-[2]- Ajouter plusieurs contact \n");
     printf ("Entre votre choix : ");
     scanf ("%d",&chois2);
-    system("cls");
-        switch(chois2){
+ 
+  switch(chois2){
   system("cls");
                 case 1:ajout_simple(c);
               
@@ -157,14 +158,14 @@ void supprimer(contacts c){
        
 
         printf (" -[1]- supprimer par nom \n");
-        printf (" -[2]- Rsupprimer par ID \n");
+        printf (" -[2]- supprimer par ID \n");
         printf ("Entre votre choix : ");
         scanf ("%d",&chois2);
         system("cls");
         switch (chois2){
           case 1:
                 printf ("Entre le nom de contact  : ");
-                scanf ("%s",&nomR);
+                scanf ("%s", nomR);
                     for(int i=0;i<=n;i++){
                     if(strcmp(c[i].nom,nomR)==0){
                       z=i;
@@ -178,7 +179,7 @@ void supprimer(contacts c){
                
                affichParId(c,z);
                 printf("-[1]-Confirmer\n");
-                printf("-[1]-Anuler \n ");
+                printf("-[2]-Anuler \n ");
                 printf ("Entre votre choix : ");
                 scanf ("%d",&chois2);
                  system("cls");
@@ -191,7 +192,7 @@ void supprimer(contacts c){
                         for(int i=0;i<n;i++){
                           c[i].id = i+1;
                         }
-                         printf ("Supprime avec succes !\n");
+                         printf (GREEN"Supprime avec succes !\n");
                   break;
                 case 2: break;
                 default:printf("Option non valide ! \n");
@@ -317,7 +318,7 @@ int recherch(contacts c){
         switch (chois2){
           case 1:
                 printf ("Entre le nom de contact  : ");
-                scanf ("%s",&nomR);
+                scanf ("%s", nomR);
                     for(int i=0;i<=n;i++){
                     if(strcmp(c[i].nom,nomR)==0){
                       z=i;
@@ -345,6 +346,7 @@ int recherch(contacts c){
                     }
                     break;
           default :printf ("Option non valide ! \n");
+       
                   }
                 }
 void affichier(contacts c){
@@ -394,7 +396,7 @@ void modification(contacts c){
           printf ("Adresse e-mail : ");
           scanf("%50s", c[y].mail);
        
-          printf ("Informations modifier  avec succes !\n ");
+          printf (GREEN"Informations modifier  avec succes !\n "RESET);
      }
     
     }
