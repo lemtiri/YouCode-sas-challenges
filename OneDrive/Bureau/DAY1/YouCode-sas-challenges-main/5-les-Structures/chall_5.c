@@ -1,18 +1,18 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <string.h>
 
 typedef struct{
     char titre[24];
     char auteur[24];
     int annee; 
 }livre;
-struct inis_livre()
+livre inis_livre()
     { 
         livre l;
         char ttr[24];
         char atr[24];
         int ann;
-        prntf ("Entre les information de livre \n ");
+        printf ("Entre les information de livre \n ");
         printf ("titre    :");
         scanf ("%s", ttr);
         printf("Auteur  : ");
@@ -20,9 +20,9 @@ struct inis_livre()
         printf ("annee : ");
         scanf("%d", &ann);
       
-      strcpy(ttr,l.titre);
-      strcpy(atr,l.auteur);
-      l.annee=an;
+      strcpy(l.titre,ttr);
+      strcpy(l.auteur,atr);
+      l.annee=ann;
      return l;
 }
   

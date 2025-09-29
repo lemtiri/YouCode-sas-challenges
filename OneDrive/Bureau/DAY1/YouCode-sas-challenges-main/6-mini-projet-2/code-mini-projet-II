@@ -8,9 +8,7 @@ typedef struct{
     int id;
 }contact;
    typedef contacts contact[1000];
-   char nomR[25];
-   int z = -1;
-void ajout_mull(contacts c,int *n)
+    void ajout_mull(contacts c,int *n)
     {
         
         
@@ -32,7 +30,7 @@ void ajout_mull(contacts c,int *n)
       printf ("Informations saisies avec succes ! ");
       
     }
-void ajout_simple(contacts c ,int *n){
+     void ajout_simple(contacts c ,int *n){
        int i = *n;
           printf ("Entre les information de contact %d \n",i);
           c[i-1].id= i+1;
@@ -49,7 +47,7 @@ void ajout_simple(contacts c ,int *n){
           (*n)++;
           printf ("Informations saisies avec succes ! ");
      }
-void ajouter(contacts c,int *n){
+     void ajouter(contacts c,int *n){
         int chois;
 
               printf (" -[1]- Ajout simple  \n");
@@ -62,76 +60,11 @@ void ajouter(contacts c,int *n){
                 break;
                 case 2:ajout_mull(c,&n);
                 break;
-                default: printf ("chois indisponible !");
+                default: printf ("choix indisponible !");
                 break;
         }
      }
-void supprimer(contacts c,int n){
-        int chois;
-        int nom2;
-        int id2;
-        printf (" -[1]- supprimer par nom \n");
-        printf (" -[2]- Rsupprimer par ID \n");
-        printf ("Entre votre choix : ");
-        scanf ("%d",&chois);
-
-        switch (chois){
-          case 1: 
-        printf ("Entre le nom de contact  : ");
-                scanf ("%s",&nomR);
-                for(int i=0;i<n;i++){
-                    if(strcmp(c.nom,nomR)==0){
-                      z=i;
-                       break;
-                    }
-                } 
-                 if(z==(-1))
-                 printf ("Il n y a aucun contact avec ce nom ");
-         else {
-                switch(chois2){
-                         case 1:for(int i=x;i<n-1;i++){
-                        c[i].id = c[i+1].id;
-                        strcpy(c[i].nom,c[i+1].nom);
-                        strcpy(c[i].numero,c[i+1].numero);
-                        strcpy(c[i].mail,c[i+1].mail);
-                       
-                         }
-                         (*n)--; 
-                        }
-                     
-                    }
-
-
-     }  
- void recherch(contacts c,int n){
-             
-          printf ("Entre le nom de contact : ");
-          scanf ("%s", nom2);
-          for(int i=0;i<n;i++){
-                if (strcmp(c[i].nom,nom2)==0)
-                {
-                        return i;
-                        break;
-                }
-               
-          }
-                break;
-          case 2:printf ("Entre  le id de ce contact : ");
-                 scanf("%d",&id2); 
-            
-          do{
-             printf ("id indisponible ! Entre  le id de ce contact : ");
-             scanf("%d",&id2);  
-             
-            }while(id2 <=0|| id2 > n);
-            
-          break;
-            
-
-        
-        }
-
-    }
+    
 int main(){
     contacts c;
     int n=0;
