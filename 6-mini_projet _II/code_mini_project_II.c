@@ -136,8 +136,8 @@ void ajouter(contacts c){
     printf ("-[2]- Ajouter plusieurs contact \n");
     printf ("Entre votre choix : ");
     scanf ("%d",&chois2);
- 
-  switch(chois2){
+    system("cls");
+        switch(chois2){
   system("cls");
                 case 1:ajout_simple(c);
               
@@ -154,7 +154,7 @@ void ajouter(contacts c){
       }
 
 void supprimer(contacts c){
- system("cls");
+
        
 
         printf (" -[1]- supprimer par nom \n");
