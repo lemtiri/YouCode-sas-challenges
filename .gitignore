@@ -1,0 +1,20 @@
+# Ignorer Windows / OneDrive
+Desktop/
+Documents/
+Downloads/
+Music/
+Pictures/
+Videos/
+AppData/
+NTUSER.DAT*
+*.lnk
+*.ini
+*.log
+
+# Ignorer fichiers compilés C
+*.exe
+*.o
+*.out
+
+# Ignorer VSCode
+.vscode/
