@@ -155,6 +155,7 @@ void ajout_plus(animuax anm){
 	int n;
 	printf ("Combien d animuax voleuz vous ajoutre : ");
 	scanf ("%d",&n);
+    getchar();
 	for(int i=0;i<n;i++){
 		ajout_simple(anm);
 	}
@@ -264,7 +265,7 @@ void affich_habitat(animuax anm){
       printf ("-[ 4 ]- Aquatique\n");
       printf (CYAN "Entre votre choix : " RESET);
       scanf("%d",&choix);
-
+      getchar();
     switch(choix){
         case 1 :strcpy(Rhabitat,"savane");
                 break;
@@ -301,7 +302,7 @@ void modifier(animuax anm ,int n){
       printf ("-[ 4 ]- Aquatique\n");
       printf (CYAN "Entre votre choix : " RESET);
       scanf("%d",&choix);
-
+      getchar();
     switch(choix){
         case 1 :strcpy(anm[n].habitat,"savane");
                 break;
@@ -389,6 +390,7 @@ void rech_id(animuax anm){
     printf("\n-[ 0 ]- Retour \n");
     printf ("Entre votre choix : ");
     scanf ("%d",&choix);
+      getchar();
     switch(choix){
         case 1: modifier(anm,x);
             break;
@@ -427,6 +429,8 @@ void rech_nom(animuax anm){
     printf("\n-[ 1 ]- modifier\n");
     printf("\n-[ 2 ]- supprimer\n");
     printf("\n-[ 0 ]- Retour \n");
+    printf ("%d",&choix);
+    getchar();
     switch(choix){
         case 1:modifier(anm,x);
             break;
@@ -455,7 +459,7 @@ void rech_nom(animuax anm){
     printf ("\n-[ 5 ]- crocodile\n");
     printf (CYAN "Entre votre choix : " RESET);
     scanf ("%d",&choix);
-
+    getchar();
     switch(choix){
         case 1: strcpy(Respece,"lion");
                 break;
@@ -483,19 +487,22 @@ void affichier(animuax anm){
    	int choix;
    do{
     printf ("-- Afficher la liste complete -- \n");
-    printf (" -[ 1 ]- trier par nom (a-z) \n");
+    printf (" -[ 1 ]- trier par ID  \n");
+    printf (" -[ 2 ]- trier par Nom (a-z) \n");
     printf (" -[ 2 ]- trier par age  \n");
     printf (" -[ 3 ]- d un habitat \n");
     printf (" -[ 0 ]- Quiter \n");
 	printf (CYAN "Entre votre choix : " RESET);
     scanf ("%d",&choix);
-	system("cls");
+	getchar();
     switch(choix){
-        case 1: trier_nom(anm);
+        case 1: afficher_plus(anm);
                 break;
-        case 2: trier_age(anm);
+        case 2: trier_nom(anm);
                 break;
-        case 3: affich_habitat(anm);
+        case 3: trier_age(anm);
+                break;
+        case 4: affich_habitat(anm);
                 break;
         case 0: printf (CYAN "Retour au menu prancipal \n" RESET);break;
         default : printf (YELLOW "Option non valide ! \n" RESET); break;
@@ -516,7 +523,7 @@ void recherche(animuax anm){
 	printf ("-[ 0 ]- Retour au menu Prancipal\n");
 	printf (CYAN "Entre votre choix : " RESET);
 	scanf ("%d",&choix);
-    system("cls");
+    getchar();
 	switch(choix){
 		case 1:rech_id(anm);
 		break;
@@ -560,7 +567,18 @@ int minidx,maxidx;
 } 
 
 void stocke_fichier(animuax anm){
-    FILE *f = fopen("");
+    FILE *f = fopen("animaux.csv", "w");
+    if(f == NULL){
+        printf (RED "Erour d overture fichier \n" RESET);
+        exit(-1);
+    }
+    for(int i=0;i<nbr;i++){
+      //  3, "zebre", "zebra", 5, "Savane", "herbivore", 320.0, "01/10/2025 10:32:12"
+       fprintf(f, "%d,%s,%s,%d,%s,%s,%.2f,%s\n",
+                anm[i].id,anm[i].nom,anm[i].espece,anm[i].age,anm[i].habitat,anm[i].Categori,anm[i].poids,anm[i].date_ar);
+
+    }
+
 }
 int main(){
    animuax a= {
