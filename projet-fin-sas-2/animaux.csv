@@ -1,0 +1,20 @@
+1,elephant,elephant,15,savane,herbivore,4500.0,01/10/2025 10:30:15
+2,girafe,girafe,7,Savane,herbivore,800.0,01/10/2025 10:31:00
+3,zebre,zebra,5,Savane,herbivore,320.0,01/10/2025 10:32:12
+4,tigre,tigre,9,Jungle,carnivore,220.0,01/10/2025 10:33:05
+5,panda,panda,6,Foret,herbivore,100.0,01/10/2025 10:34:18
+6,kangourou,kangourou,4,desert,herbivore,65.0,01/10/2025 10:35:00
+7,ours,ours,12,Montagne,omnivore,300.0,01/10/2025 10:36:10
+8,aigle,aigle,3,Montagne,carnivore,8.0,01/10/2025 10:37:25
+9,chameau,chameau,14,Desert,herbivore,540.0,01/10/2025 10:38:40
+10,hippopotame,hippo,10,aquatique,herbivore,1500.0,01/10/2025 10:39:55
+11,crocodile,crocodile,17,aquatique,carnivore,700.0,01/10/2025 10:41:05
+12,flamant,flamant Rose,2,aquatique,herbivore,3.5,01/10/2025 10:42:15
+13,autruche,autruche,8,savane,herbivore,120.0,01/10/2025 10:43:28
+14,rhinoceros,rhino,11,savane,herbivore,2100.0,01/10/2025 10:44:40
+15,pingouin,pingouin,4,aquatique,carnivore,12.0,01/10/2025 10:45:55
+16,chien,chien,6,domestique,omnivore,25.0,01/10/2025 10:47:10
+17,chat,chat,5,domestique,carnivore,6.0,01/10/2025 10:48:25
+18,perroquet,perroquet,3,jungle,herbivore,1.2,01/10/2025 10:49:38
+19,cheval,cheval,9,plaine,herbivore,380.0,01/10/2025 10:50:50
+20,singe,singe,7,jungle,omnivore,40.0,01/10/2025 10:52:05

@@ -9,9 +9,10 @@
 #define GREEN   "\033[32m"
 #define CYAN     "\033[36m"
 #define YELLOW  "\033[33m"
-#define RED "\e[1;31m"
+#define RED "\033[1;31m"
 
-int nbr=20;
+
+int nbr = 20;
 
 char nom[50];
 typedef struct {
@@ -27,6 +28,7 @@ typedef struct {
 
 typedef animal animuax[max];
 // fx pour valide le nom pas de nombre
+
 int nom_valid(char nom[]) {
     for (int i = 0; nom[i] != '\0'; i++) {
         if (isdigit(nom[i])) 
@@ -121,7 +123,7 @@ void ajout_simple(animuax anm){
         case 4: strcpy(anm[nbr].habitat,"aquatique");
                 break;
         case 5:printf ("Entre l habutat : ");
-                scanf("%S", anm[nbr].habitat);
+                scanf("%s", anm[nbr].habitat);
                 while(getchar() != '\n');
                 break;
         default : (YELLOW "Option non valide ! \n" RESET);
@@ -236,7 +238,7 @@ void trier_nom(animuax anm){
     }
     afficher_plus(anm);
  }
-void trier_age(animuax anm){
+ void trier_age(animuax anm){
  animal tmp;
     for(int i=0; i<nbr-1; i++) {
         for(int j=0; j<nbr-i-1; j++) {
@@ -257,7 +259,7 @@ void affichier_simpl_idx(animuax anm,int n){
                anm[n].id, anm[n].nom, anm[n].espece, anm[n].age, anm[n].poids,
                anm[n].habitat, anm[n].Categori);
 	printf(CYAN "+----+------------+------------+-----+---------+------------+---------------+\n" RESET);
-	printf(GREEN "ID %d - Date d'arrivee : %s\n" RESET, anm[n].id, anm[n].date_ar);
+	printf(YELLOW "ID %d - Date d'arrivee : %s\n" RESET, anm[n].id, anm[n].date_ar);
     printf("---------------------------------------------------------------\n");
 		 if(strcmp(anm[n].espece,"Lion")==0&&anm[n].age>20) {
             printf(YELLOW " Attention ! Id %d Lion a dspasss 20 ans \n",anm[n].id, RESET);
@@ -317,11 +319,11 @@ void modifier(animuax anm ,int n){
         while(getchar() != '\n');
         switch (choix)
         {
-        case 1: strcpy(anm[nbr].Categori,"carnivores");
+        case 1: strcpy(anm[n].Categori,"carnivores");
             break;
-        case 2: strcpy(anm[nbr].Categori,"herbivores");
+        case 2: strcpy(anm[n].Categori,"herbivores");
             break;
-        case 3: strcpy(anm[nbr].Categori,"omnivores");
+        case 3: strcpy(anm[n].Categori,"omnivores");
             break;
         default : printf (YELLOW " Option non valide ! \n" RESET);
             break;
@@ -591,17 +593,34 @@ void stocke_fichier(animuax anm){
     }
     for(int i=0;i<nbr;i++){
       //  3, "zebre", "zebra", 5, "Savane", "herbivore", 320.0, "01/10/2025 10:32:12"
-       fprintf(f, "%d,%s,%s,%d,%s,%s,%.2f,%s\n",
-                anm[i].id,anm[i].nom,anm[i].espece,anm[i].age,anm[i].habitat,anm[i].Categori,anm[i].poids,anm[i].date_ar);
+       fprintf(f, "%d,%s,%s,%d,%s,%s,%.2f,%s\n", 
+                anm[i].id, anm[i].nom, anm[i].espece, anm[i].age,anm[i].habitat, anm[i].Categori, anm[i].poids, anm[i].date_ar);
 
     }
     printf (GREEN " les donnee enregistrer avec secces !\n" RESET);
  }
 
+int  lit_fichier(animuax anm){
+    int n=0;
+    FILE *f = fopen("animaux.csv","r");
+    if(f == NULL){
+        printf (RED "Erour d lit les information dfichier \n" RESET);
+        exit(-1);
+    }
+   while(fscanf(f,"%d,%s,%s,%d,%s,%1s,%f,%s",
+                 &anm[n].id, anm[n].nom, anm[n].espece, &anm[n].age,
+                 anm[n].habitat, anm[n].Categori, &anm[n].poids, anm[n].date_ar) == 8)
+    {
+        n++;
+    }
+               fclose(f);
+               return n;
+               
+}
 
 int main(){
-   animuax a= {
-    {1, "elephant", "elephant", 15, "savane", "herbivore", 4500.0, "01/10/2025 10:30:15"},
+    
+   animuax a ={ {1, "elephant", "elephant", 15, "savane", "herbivore", 4500.0, "01/10/2025 10:30:15"},
     {2, "eirafe", "girafe", 7, "Savane", "herbivore", 800.0, "01/10/2025 10:31:00"},
     {3, "zebre", "zebra", 5, "Savane", "herbivore", 320.0, "01/10/2025 10:32:12"},
     {4, "tigre", "tigre", 9, "Jungle", "carnivore", 220.0, "01/10/2025 10:33:05"},
@@ -622,6 +641,7 @@ int main(){
     {19, "cheval", "cheval", 9, "plaine", "herbivore", 380.0, "01/10/2025 10:50:50"},
     {20, "singe", "singe", 7, "jungle", "omnivore", 40.0, "01/10/2025 10:52:05"}
  };
+ 
      int choix;
      
      do{
@@ -631,9 +651,9 @@ int main(){
     printf ("                  |              Menu                |\n");
     printf (CYAN "                  |==================================|\n" RESET);
     printf (CYAN "                  |       choix      |  OPTION       |\n" RESET);
-    printf (CYAN "                  |==================================|\n" RESET);
-    printf ("                  |     -[  1  ]->   | AJOUTER       |\n");
-    printf ("                  |==================================|\n");
+        printf (CYAN "                  |==================================|\n" RESET);
+        printf ("                  |     -[  1  ]->   | AJOUTER       |\n");
+        printf ("                  |==================================|\n");
     printf ("                  |     -[  2  ]->   | AFFICHIER     |\n");
     printf ("                  |==================================|\n");
     printf ("                  |     -[  3  ]->   | RECHERCHER    |\n");
@@ -667,4 +687,4 @@ int main(){
 
      }while(choix !=0);
     return 0;
-}
+}  
